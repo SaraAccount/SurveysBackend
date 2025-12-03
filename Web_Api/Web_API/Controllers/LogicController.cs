@@ -19,39 +19,14 @@ namespace Web_API.Controllers
             _surveyRepository = surveyRepository;
         }
 
-        //// GET: api/<LogicController>
-        //[HttpGet]
-        //public IEnumerable<string> Get()
-        //{
-        //    return new string[] { "value1", "value2" };
-        //}
-
-        // GET api/<LogicController>/5
 
         [HttpGet("{id}")]
-        public async Task<Dictionary<int, object>> Get(int id)
+        public async Task<Dictionary<int, object>> GetSurveyResult(int id)
         {
             Survey s = await _surveyRepository.GetById(id);
             var result = CompleteSurvey.CompleteSurveyData(s);
             return result;
         }
 
-        //// POST api/<LogicController>
-        //[HttpPost]
-        //public void Post([FromBody] string value)
-        //{
-        //}
-
-        //// PUT api/<LogicController>/5
-        //[HttpPut("{id}")]
-        //public void Put(int id, [FromBody] string value)
-        //{
-        //}
-
-        //// DELETE api/<LogicController>/5
-        //[HttpDelete("{id}")]
-        //public void Delete(int id)
-        //{
-        //}
     }
 }

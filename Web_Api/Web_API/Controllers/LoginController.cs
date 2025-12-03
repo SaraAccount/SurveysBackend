@@ -26,31 +26,6 @@ namespace Web_API.Controllers
             this.config = config;
         }
 
-        //[HttpPost("login")]
-        //public async Task<IActionResult> Login([FromQuery] LoginUser userLogin)
-        //{
-        //    var user = await Authenticate(userLogin);
-        //    if (user != null)
-        //    {
-        //        var token = Generate(user);
-        //        return Ok(token);
-        //    }
-        //    return BadRequest("user does not exist");
-        //}
-
-
-        //[HttpPost("login")]
-        //public async Task<IActionResult> Login([FromBody] LoginUser userLogin)
-        //{
-        //    var user = await Authenticate(userLogin);
-        //    if (user != null)
-        //    {
-        //        var token = Generate(user);
-        //        return Ok(token);
-        //    }
-        //    return BadRequest("user does not exist");
-        //}
-
         [HttpPost("login")]
         public async Task<IActionResult> Login([FromBody] LoginUser userLogin)
         {
