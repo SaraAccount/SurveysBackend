@@ -28,8 +28,7 @@ namespace Repository.Entities
         public User User { get; set; }
 
 
-     
-        //service - פונקציה שתמיר את הרשימה של ערך התשוהב למשתנה נורמלי
+
 
 
     }

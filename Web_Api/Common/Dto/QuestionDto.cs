@@ -17,10 +17,5 @@ namespace Common.Dto
         public string Options { get; set; }
 
 
-        //// Add
-        //public int SurveyId { get; set; }
-
-        //[ForeignKey("SurveyId")]
-        //public Survey Survey { get; set; }
     }
 }

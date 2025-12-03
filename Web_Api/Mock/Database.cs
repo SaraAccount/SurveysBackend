@@ -32,29 +32,26 @@ namespace Mock
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            // קשר של 1 לרבים - כל משתמש יכול ליצור כמה סקרים
+     
             modelBuilder.Entity<Survey>()
                 .HasOne(s => s.Surveyor)
                 .WithMany(u => u.OwnSurveys)
                 .HasForeignKey(s => s.SurveyorId)
-                .OnDelete(DeleteBehavior.NoAction); // משנה ל-NoAction למנוע בעיות
+                .OnDelete(DeleteBehavior.NoAction); 
 
-            // קשר של רבים לרבים - משתמשים יכולים לענות על כמה סקרים
+     
             modelBuilder.Entity<Survey>()
                 .HasMany(s => s.Respondents)
                 .WithMany(u => u.AnsweredSurveys)
                 .UsingEntity(j => j.ToTable("UserSurveys"));
 
 
-
-            // קשר של תשובות למשתמש (מי ענה על השאלה)
             modelBuilder.Entity<Answer>()
                 .HasOne(a => a.User)
                 .WithMany()
                 .HasForeignKey(a => a.UserId)
-                .OnDelete(DeleteBehavior.Restrict); // Restrict למנוע בעיות
+                .OnDelete(DeleteBehavior.Restrict);
 
-            // קשר של תשובות לשאלה
             modelBuilder.Entity<Answer>()
                 .HasOne(a => a.Question)
                 .WithMany(q => q.Answers)
