@@ -1,17 +1,13 @@
-# Build stage
-FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
+FROM mcr.microsoft.com/dotnet/sdk:7.0 AS build
 WORKDIR /app
 
-COPY . ./
+
+COPY Web_Api/Web_Api.sln ./
+
+COPY Web_Api/*.csproj ./Web_API/
+
 RUN dotnet restore
+
+COPY Web_Api/ ./
+
 RUN dotnet publish -c Release -o out
-
-# Run stage
-FROM mcr.microsoft.com/dotnet/aspnet:8.0
-WORKDIR /app
-COPY --from=build /app/out .
-
-EXPOSE 8080
-ENV ASPNETCORE_URLS=http://+:8080
-
-ENTRYPOINT ["dotnet", "Web_API.dll"]
