@@ -36,19 +36,20 @@ namespace Repository.Repositories
         public async Task<List<Survey>> GetAll()
         {
             return await context.Surveys
-                .Include(s => s.Questions)       
-                .Include(s => s.Respondents)     
-                .Include(s => s.Surveyor)          
+                .Include(s => s.Questions)
+                    .ThenInclude(q => q.Answers) 
+                .Include(s => s.Respondents)
+                .Include(s => s.Surveyor)
                 .ToListAsync();
         }
-
         public async Task<Survey> GetById(int id)
         {
             return await context.Surveys
-                .Include(s => s.Questions)         
-                .Include(s => s.Respondents)
-                .Include(s => s.Surveyor)
-                .FirstOrDefaultAsync(x => x.Id == id);
+                    .Include(s => s.Questions)
+                        .ThenInclude(q => q.Answers) 
+                    .Include(s => s.Respondents)
+                    .Include(s => s.Surveyor)
+                    .FirstOrDefaultAsync(x => x.Id == id);
         }
 
         public async Task UpdateItem(Survey item)
