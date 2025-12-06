@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Repository.Entities;
 using Repository.Interface;
 using Repository.Repositories;
@@ -10,6 +11,7 @@ namespace Web_API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class LogicController : ControllerBase
     {
         private readonly IRepository<Survey> _surveyRepository;
@@ -21,7 +23,7 @@ namespace Web_API.Controllers
 
 
         [HttpGet("{id}")]
-        public async Task<Dictionary<int, object>> Get(int id)
+        public async Task<Dictionary<int, object>> GetSurveyResult(int id)
         {
             Survey s = await _surveyRepository.GetById(id);
             var result = CompleteSurvey.CompleteSurveyData(s);

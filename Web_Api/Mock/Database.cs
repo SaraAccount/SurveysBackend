@@ -44,7 +44,6 @@ namespace Mock
                 .UsingEntity(j => j.ToTable("UserSurveys"));
 
 
-
             modelBuilder.Entity<Answer>()
                 .HasOne(a => a.User)
                 .WithMany()

@@ -42,7 +42,6 @@ namespace Repository.Repositories
                 .Include(s => s.Surveyor)
                 .ToListAsync();
         }
-
         public async Task<Survey> GetById(int id)
         {
             return await context.Surveys
