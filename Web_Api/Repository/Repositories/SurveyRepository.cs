@@ -36,16 +36,18 @@ namespace Repository.Repositories
         public async Task<List<Survey>> GetAll()
         {
             return await context.Surveys
-                .Include(s => s.Questions)          // 👈 טוען את כל השאלות
-                .Include(s => s.Respondents)       // (אופציונלי – אם את צריכה גם אותם)
-                .Include(s => s.Surveyor)          // (אם את צריכה גם את יוצר הסקר)
+                .Include(s => s.Questions)
+                    .ThenInclude(q => q.Answers) 
+                .Include(s => s.Respondents)
+                .Include(s => s.Surveyor)
                 .ToListAsync();
         }
 
         public async Task<Survey> GetById(int id)
         {
             return await context.Surveys
-                .Include(s => s.Questions)         // 👈 גם כאן
+                .Include(s => s.Questions)
+                    .ThenInclude(q => q.Answers) 
                 .Include(s => s.Respondents)
                 .Include(s => s.Surveyor)
                 .FirstOrDefaultAsync(x => x.Id == id);

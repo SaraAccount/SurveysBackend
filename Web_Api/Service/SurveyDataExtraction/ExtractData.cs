@@ -53,13 +53,7 @@ namespace Service.SurveyDataExtraction
             return allSelections.ToArray();
         }
 
-        public static string[] ParseAnswerValue(string raw)
-        {
-            return raw
-                .Split(new[] { '/' }, StringSplitOptions.RemoveEmptyEntries)
-                .Select(opt => opt.Trim())
-                .ToArray();
-        }
+     
         
         public static string[] ExtractSelectAndRadioAnswer(Survey survey, int questionId)
         {
@@ -103,6 +97,17 @@ namespace Service.SurveyDataExtraction
             }
 
             return textAnswers.ToArray();
+        }
+
+
+        public static string[] ParseAnswerValue(string raw)
+        {
+            if (string.IsNullOrEmpty(raw)) return new string[0];
+
+            return raw
+                .Split(new[] { ',', '/' }, StringSplitOptions.RemoveEmptyEntries)
+                .Select(opt => opt.Trim()) 
+                .ToArray();
         }
 
 

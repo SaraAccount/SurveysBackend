@@ -51,62 +51,6 @@ namespace Web_API.Controllers
             return Ok(survey);
         }
 
-        //[HttpPost]
-        //[Authorize]
-        //public async Task<ActionResult> Post([FromBody] SurveyDto surveyDto)
-        //{
-        //    var survey = mapper.Map<Survey>(surveyDto);
-
-        //    // קישור כל שאלה ל־Survey הנוכחי
-        //    if (survey.Questions != null)
-        //    {
-        //        foreach (var question in survey.Questions)
-        //        {
-        //            question.Survey = survey;
-        //        }
-        //    }
-
-        //    await repository.AddItem(survey);
-        //    await repository.SaveChangesAsync();
-        //    return Ok(survey);
-        //}
-
-
-
-        //[HttpPost]
-        //[Authorize]
-        //public async Task<ActionResult> Post([FromBody] SurveyDto surveyDto)
-        //{
-        //    // ממפה את ה־DTO ל־Entity
-        //    var survey = mapper.Map<Survey>(surveyDto);
-
-        //    // קישור כל שאלה ל־Survey הנוכחי (חשוב ל־EF)
-        //    if (survey.Questions != null)
-        //    {
-        //        foreach (var question in survey.Questions)
-        //        {
-        //            question.Survey = survey;
-        //        }
-        //    }
-
-        //    // ממפה את רשימת Respondents לפי Id (User רק עם Id מספיק ל־EF)
-        //    if (surveyDto.RespondentId != null)
-        //    {
-        //        survey.Respondents = surveyDto.RespondentId
-        //            .Select(id => new User { Id = id })
-        //            .ToList();
-        //    }
-
-        //    await repository.AddItem(survey);
-        //    await repository.SaveChangesAsync();
-
-        //    // אפשר להחזיר את ה־DTO או את האובייקט כפי שנשמר (בהתאם לצורך)
-        //    var resultDto = mapper.Map<SurveyDto>(survey);
-        //    return Ok(resultDto);
-        //}
-
-
-
 
         // PUT api/<SurveyController>/5
         [HttpPut]

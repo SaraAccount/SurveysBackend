@@ -20,7 +20,7 @@ namespace Service.SurveyDataExtraction
             {
                 if(question.TypeTag == eTypeTag.INPUT_NUMBER)
                 {
-                    double[] arr = ExtractData.ExtractNumberAnswer(survey, survey.Id);
+                    double[] arr = ExtractData.ExtractNumberAnswer(survey, question.Id);
                     double[] res = new double[4];
                     res[0] =  NumberInput.CalculateAverage(arr);
                     res[1] = NumberInput.CalculateMedian(arr);

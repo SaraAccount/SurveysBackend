@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Microsoft.EntityFrameworkCore; // חשוב ל-FirstOrDefaultAsync, ToListAsync
+using Microsoft.EntityFrameworkCore; 
 
 namespace Repository.Repositories
 {
